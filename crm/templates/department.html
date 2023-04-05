@@ -1,0 +1,133 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <section class="ofis">
+        <a href="{% url 'offic' %}" class="put">ОФС<span>/</span></a>
+        <div class="container-dep">
+            <h1>Отдел дизайна</h1>
+            <div class="dep-header">
+                <p>Задачи</p>
+            </div>
+            <hr>
+        </div>
+        <table class="table-project">
+            <tr>
+                <th>Zakaz Nomi</th>
+                <th>umimiy ish haqi</th>
+                {#                <th>konstruksiya</th>#}
+            </tr>
+            <tr>
+                <td>{{ orders.title }}</td>
+                <td>{{ orders.numbers }}</td>
+            </tr>
+        </table>
+
+        <table class="table-project">
+            <tr>
+                <th>Xizmat</th>
+                <th>Foiz ulushi</th>
+                <th>summasi</th>
+                <th>tugatilganligi</th>
+                <th>ishchi</th>
+            </tr>
+            {% for projectservice in projectservices %}
+                <tr style="
+    background: antiquewhite;">
+                    <td>{{ projectservice.service.name }}</td>
+                    <td>{{ projectservice.parcent }} %
+
+                        <div id="modal-project-{{ projectservice.pk }}" class="modal myModal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span onclick="closeModal('modal-project-'+{{ projectservice.pk }})" class="close">&times;</span>
+                                <form class="forms-clients" method="post"
+                                      action="{% url 'edit_percent' projectservice.pk %}">
+                                    {% csrf_token %}
+                                    <input type="number" min="0.1" max="1000" step="0.1" name="percent"
+                                           value="{{ projectservice.parcent }}">
+                                    <input type="number" name="max_parcent" value="{{ projectservice.max_parcent }}">
+                                    <select name="username" multiple>
+                                        {% for user in projectservice.order.user.all %}
+                                            <option value="{{ user.id }}" {% if user in  projectservice.user.all %}
+                                                    selected {% endif %}>{{ user.username }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn-form-clients" type="submit">Добавить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ projectservice.total_prince }}</td>
+                    <td>{{ projectservice.max_parcent }} %
+                        <button class="btn-archive modal-project-btn" id="{{ projectservice.pk }}">изменить</button>
+                    </td>
+                    <td>
+                        {% for user in projectservice.user.all %}
+                            {{ user.username }} <br/>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <table class="table-project">
+            <tr>
+                <th>Umumiy foiz</th>
+                <th>Summa</th>
+                <th>Umumiy tugatilgan foizi</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{ result_parcent }} %</td>
+                <td>{{ reuslt_sum }}</td>
+                <td>{{ max_percent_sum }} %</td>
+            </tr>
+
+
+        </table>
+        <hr>
+        <table class="table-project">
+            <tr>
+                <th>Tugatilgan foiz</th>
+                <th>Tugatilgan foiz</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{ sum_percent }} %</td>
+                <td>{{ result }}</td>
+            </tr>
+        </table>
+        <hr>
+        <h1 style="color: #EF4D23; font-size: 18px">Hujjatlar</h1>
+        <section>
+            <div class="clients-header">
+                <button type="button" id="myBtn" class="btn-clients" style="margin-left: 90%; font-size: 13px">Hujjat
+                    yuklash
+                </button>
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form class="forms-clients" method="post" action="{% url 'department' orders.pk %}"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button class="btn-form-clients" type="submit">Добавить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div style="display: flex; padding: 10px;flex-wrap: nowrap;flex-direction: column;">
+            {% for field in order_fields %}
+                <div style="display: flex;align-items: center; padding: 10px 0 10px 0">
+                    <a href="/media/{{ field.field }}" download>
+                        <i class="fa-regular fa-file" download="newfilename"
+                           style="font-size: 40px; color: #EF4D23">{{ field.fields }}</i>
+                    </a>
+                    <span style="font-size: 18px; padding: 0 10px 0 10px;">{{ field.title }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

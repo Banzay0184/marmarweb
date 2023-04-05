@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+<div class="min-h-screen bg-white flex">
+    <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div class="mx-auto w-full max-w-sm">
+            <div>
+                <h2 class="mt-6 text-3xl leading-9 font-extrabold text-gray-900">
+                    Войдите в свой аккаунт
+                </h2>
+            </div>
+
+            <div class="mt-8">
+
+                <div class="mt-6">
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            <p style="color: #ff4e20; margin-bottom: 10px">
+                                Неправильный пароль или Имя
+                            </p>
+                        {% endif %}
+                        <div>
+                            <label htmlFor="email"
+                                   class="block text-sm font-medium leading-5 text-gray-700">
+                                Имя
+                            </label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                {{ form.username }}
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label htmlFor="password"
+                                   class="block text-sm font-medium leading-5 text-gray-700">
+                                Пароль
+                            </label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                {{ form.password }}
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="remember_me" type="checkbox"
+                                       class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"/>
+                                <label htmlFor="remember_me"
+                                       class="ml-2 block text-sm leading-5 text-gray-900">
+                                    Запомните меня
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                                <span class="block w-full rounded-md shadow-sm mb-[10px]">
+                                    <button type="submit"
+                                            class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#EF4D23] hover:bg-[#ffff] hover:text-[#3d3d3d] border-[#EF4D23] focus:outline-none focus:border-[#EF4D23] focus:shadow-outline-indigo active:bg-[#EF4D23] active:text-[#ffff] transition duration-150 ease-in-out">
+                                        Войти
+                                    </button>
+                                </span>
+                            <a class='hover:text-[#EF4D23] transition duration-150 ease-in-out' href={% url 'web' %}>Назад
+                                на
+                                сайт</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden lg:block relative w-0 flex-1">
+        <img class="absolute inset-0 h-full w-full object-cover"
+             src="https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+             alt=""/>
+    </div>
+</div>
+</body>
+</html>

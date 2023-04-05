@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mx-auto px-[40px] text-[#051937]">
+        <div class="p-[20px] flex items-center font-bold">
+            <h1 class='text-[25px]'>ВСЕ КЛИЕНТЫ</h1>
+            <span class='ml-[20px] text-[20px] text-white bg-[#EF4D23] py-[5px] px-[10px] rounded-[10px]'>{{ klients_count }}</span>
+        </div>
+        <div class='flex justify-between'>
+            <div class="flex">
+                {% for i in clients %}
+                    <div class="flex flex-col">
+                        <div class="border-b-2 border-[#EF4D23] p-[10px] font-bold">
+                            {{ i.status }}
+                        </div>
+                        <div class="border p-[10px] font-bold text-[#EF4D23] m-[10px] rounded-[15px] hover:border-[#EF4D23]">
+                            <button class='w-[100%]'>+ Добавить</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% for client in clients %}
+                <div>
+                    <div class=" border m-[10px] p-[10px] rounded-[15px] font-semibold text-[12px] flex flex-col">
+                        <div class="flex justify-between items-center gap-[8px]">
+                            {{ client.full_name }}
+                            <span class="text-[20px] hover:text-[#EF4D23] cursor-pointer">:</span>
+                        </div>
+                        <a href="tel:{{ client.phone }}" class='hover:text-[#EF4D23]'>{{ client.phone }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {# Model window start #}
+    <div class='hidden fixed top-0 left-0 flex justify-center items-center bg-black/[.54] w-[100vw] h-[100vh] z-[99]'>
+        <div class="bg-[#ffff] w-[500px] shadow-2xl rounded-[10px]">
+            <div class="py-[10px] px-[20px] border-b border-[#EF4D23] text-[#EF4D23]">
+                <h3>dsdsdsd</h3>
+            </div>
+            <div class="py-[20px] px-[20px]">
+                <table class="w-full text-[#051937] ">
+                    <tbody class="w-100%">
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Ф.И.О:</td>
+                        <td class="py-4 px-4 text-start">Шарипова Гулноз</td>
+                    </tr>
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Номер телефона:</td>
+                        <td class="py-4 px-4 text-start">
+                            <a href="tel:+998914081987" class='hover:text-[#EF4D23]'>+998914081987</a>
+                        </td>
+                    </tr>
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Дата добавления:</td>
+                        <td class="py-4 px-4 text-start">2023.01.25 08:13</td>
+                    </tr>
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Адрес:</td>
+                        <td class="py-4 px-4 text-start">Ташкент</td>
+                    </tr>
+                    <tr clase="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Менеджер продаж:</td>
+                        <td class="py-4 px-4 text-start">Заирова Нигора</td>
+                    </tr>
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">Канал продаж:</td>
+                        <td class="py-4 px-4 text-start">Instagram</td>
+                    </tr>
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
+                        <td class="py-4 px-4 text-start">День рождения:</td>
+                        <td class="py-4 px-4 text-start">2023.01.25</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="flex mt-[20px] gap-[10px]">
+                    <button
+                            class=' ml-[12px] border bg-green-600 text-[#ffff] text-center rounded-[10px] p-[5px] hover:border hover:text-[#000] border-green-600 hover:bg-[#ffff]'
+                            type='submit'>Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
