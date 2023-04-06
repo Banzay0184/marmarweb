@@ -7,21 +7,17 @@
             <h1 class='text-[25px]'>ВСЕ КЛИЕНТЫ</h1>
             <span class='ml-[20px] text-[20px] text-white bg-[#EF4D23] py-[5px] px-[10px] rounded-[10px]'>{{ klients_count }}</span>
         </div>
+
         <div class='flex justify-between'>
-            <div class="flex">
-                {% for i in clients %}
-                    <div class="flex flex-col">
-                        <div class="border-b-2 border-[#EF4D23] p-[10px] font-bold">
-                            {{ i.status }}
-                        </div>
-                        <div class="border p-[10px] font-bold text-[#EF4D23] m-[10px] rounded-[15px] hover:border-[#EF4D23]">
-                            <button class='w-[100%]'>+ Добавить</button>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
             {% for client in clients %}
-                <div>
+                <div class="flex flex-col">
+                    <div class="border-b-2 border-[#EF4D23] text-center p-[10px] font-bold">
+                        {{client.status }}
+                    </div>
+                    <div class="border p-[10px] font-bold text-[#EF4D23] m-[10px] rounded-[15px] hover:border-[#EF4D23]">
+                        <button class='w-[100%]'>+ Добавить</button>
+                    </div>
+
                     <div class=" border m-[10px] p-[10px] rounded-[15px] font-semibold text-[12px] flex flex-col">
                         <div class="flex justify-between items-center gap-[8px]">
                             {{ client.full_name }}
@@ -32,6 +28,7 @@
                 </div>
             {% endfor %}
         </div>
+
     </div>
     {# Model window start #}
     <div class='hidden fixed top-0 left-0 flex justify-center items-center bg-black/[.54] w-[100vw] h-[100vh] z-[99]'>
@@ -60,7 +57,7 @@
                         <td class="py-4 px-4 text-start">Адрес:</td>
                         <td class="py-4 px-4 text-start">Ташкент</td>
                     </tr>
-                    <tr clase="w-96 hover:bg-gray-100 transition-colors group">
+                    <tr class="w-96 hover:bg-gray-100 transition-colors group">
                         <td class="py-4 px-4 text-start">Менеджер продаж:</td>
                         <td class="py-4 px-4 text-start">Заирова Нигора</td>
                     </tr>
