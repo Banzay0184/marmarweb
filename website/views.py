@@ -11,7 +11,7 @@ def home(request):
     slider = SliderHero.objects.all()
     product_images = ProjectImage.objects.all()
     projects = Projects.objects.filter(project_image__in=product_images)
-    for p in projects:
+
     return render(request, 'home.html', {'slider': slider})
 
 
