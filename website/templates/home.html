@@ -271,7 +271,8 @@
             <div class="swiper-wrapper mb-[40px]">
                 {% for projects in project %}
                     <div class="group bg-cover bg-center relative swiper-slide w-[390px] h-[460px] shadow-[0_80px_80px_-20px_rgba(0,0,0,0.1)] rounded-[4px]">
-                        <img class=" object-cover w-[100%] h-[400px] group-hover:opacity-25" src="{{ projects.img.url }}"
+                        <img class=" object-cover w-[100%] h-[400px] group-hover:opacity-25"
+                             src="{{ projects.img.url }}"
                              alt="">
                         <div class="">
                             <h3 class="text-center text-[20px] font-bold text-[#1E212C] mt-[16px] mb-[16px]">{{ projects.name }}</h3>
@@ -295,29 +296,76 @@
     {#Clients Start#}
     <div class='bg-[#F4F5F7] py-[80px] mt-[56px]'>
         <div class="flex flex-col items-center">
-            <h1 class='font-[700] text-[46px] text-[#1E212C]'>Поддерживается более чем 12 партнерамии</h1>
-            <div class="flex items-center gap-[30px] mt-[50px]">
-                <div class="flex flex-col items-center gap-[10px]">
-                    <img class='w-[200px] grayscale ' src={img1} alt=""/>
-                </div>
-                <div class="group w-[210px] flex flex-col items-center">
-                    <img class='w-[200px] grayscale group-hover:grayscale-0' src={img2} alt=""/>
-                    <span
-                            class='font-bold text-[16px] text-[#787A80] uppercase text-center'>Qurilish vazirligi</span>
-                </div>
-                <div class="group">
-                    <img class='w-[200px] grayscale group-hover:grayscale-0' src={img3} alt=""/>
-                </div>
-                <div class="group">
-                    <img class='w-[200px] grayscale group-hover:grayscale-0' src={img4} alt=""/>
-                </div>
-                <div class="group">
-                    <img class='w-[200px] grayscale group-hover:grayscale-0' src={img5} alt=""/>
-                </div>
-                <div class="group">
-                    <img class='w-[200px] grayscale group-hover:grayscale-0' src={img6} alt=""/>
-                </div>
-            </div>
+            <h1 class='font-[700] text-[46px] text-[#1E212C] mb-[25px]'>Поддерживается более чем 12 партнерамии</h1>
+            <ul class="grid grid-cols-[auto-fit_minmax(150px,_1fr)]"
+                style="
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));"
+            >
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/1000 proyektov.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/benefit.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/buxara sity.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/buxoro viloyat xokimligi.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/knauf.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/mimar.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/PCG.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/qurilish vazirligi.jpg' %}" alt="">
+                    </a>
+                </li>
+                <li class="bg-[#eee]">
+                    <a class="flex justify-center items-center h-[100%]" href="">
+                        <img class="block object-contain"
+                             style="mix-blend-mode: multiply;"
+                             src="{% static 'img/Partner/sof go.jpg' %}" alt="">
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     {#Clients End#}

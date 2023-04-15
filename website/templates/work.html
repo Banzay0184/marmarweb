@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mx-auto">
+        <div class="header_work mt-[80px]">
+            <div class="hw_title">
+                <h1 class="font-bold text-[72px] text-[#1E212C]">
+                    НАША РАБОТА
+                </h1>
+                <p class="font-[400] text-[20px] text-[#787A80] w-[555px]">
+                    Наше портфолио представляет собой 20-летний опыт строительства, подкрепленный страстью к
+                    безупречному обслуживанию клиентов, качеству и инновациям в строительной отрасли.
+                </p>
+            </div>
+
+            <div class="hw_category flex mt-[120px] gap-[10px]">
+                <a href="{% url 'work' %}"
+                   class="group py-[35px] px-[65px] rounded-[4px] hover:bg-[#FF5A30] cursor-pointer"
+                   style="box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08), 0px 30px 24px -10px rgba(154, 156, 165, 0.05), 0px 12px 10px -6px rgba(154, 156, 165, 0.04), 0px 4px 4px -4px rgba(30, 33, 44, 0.03);">
+                    <div class="flex flex-col items-center gap-[16px]">
+                        <p
+                                class="text-[#9A9CA5] font-bold group-hover:text-[#ffff]">Все проекты</p>
+                    </div>
+                </a>
+                {% for category in categories %}
+                    <a href="{% url 'category' category.id %}"
+                       class="group py-[35px] px-[65px] rounded-[4px] hover:bg-[#FF5A30] cursor-pointer"
+                       style="box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08), 0px 30px 24px -10px rgba(154, 156, 165, 0.05), 0px 12px 10px -6px rgba(154, 156, 165, 0.04), 0px 4px 4px -4px rgba(30, 33, 44, 0.03);">
+                        <div class="flex flex-col items-center gap-[16px]">
+                            <p
+                                    class="text-[#9A9CA5] font-bold group-hover:text-[#ffff]">{{ category.name }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="mt-[120px] flex gap-[30px]">
+            {% for projects in project %}
+                <div class="group bg-cover bg-center relative swiper-slide w-[390px] h-[460px] shadow-[0_80px_80px_-20px_rgba(0,0,0,0.1)] rounded-[4px]">
+                    <img class="object-cover w-[100%] h-[400px] group-hover:opacity-25" src="{{ projects.img.url }}"
+                         alt="">
+                    <div class="">
+                        <h3 class="text-center text-[20px] font-bold text-[#1E212C] mt-[16px] mb-[16px]">{{ projects.name }}</h3>
+                    </div>
+                    <a href="{% url 'project_detail' projects.pk %}"
+                       class="absolute border-2 border-[#FF5A30] p-[10px] uppercase right-[100px] top-[200px] text-[#FF5A30] font-bold group-hover:opacity-100 opacity-0">
+                        Посмотреть проект
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="flex flex-wrap mt-[120px] justify-center gap-[10px] items-center">
+            <a class=" bg-[#FF5A30] px-[10px] py-[10px] h-[50px] text-[#ffff] font-bold text-[16px] uppercase rounded-[4px] border-[2px] border-[#ffff] hover:bg-transparent hover:text-[#FF5A30] hover:border-[#EF4D23] hover:border-[2px]
+{% if not project.has_previous %} hidden{% endif %} "
+               href="{% if project.has_previous %} {% url 'paginator' project.previous_page_number %} {% else %} # {% endif %}"
+            >
+                предыдущий
+            </a>
+            {% for page in project.paginator.page_range %}
+                <a href="{% url 'paginator' page %}"
+                   class="bg-[#FF5A30] py-[10px] px-[10px] h-[50px] text-[#ffff] font-bold text-[16px] uppercase rounded-[4px] border-[2px] border-[#ffff] hover:bg-transparent hover:text-[#FF5A30] hover:border-[#EF4D23] hover:border-[2px]">
+                    {{ page }}
+                </a>
+            {% endfor %}
+            <a class="bg-[#FF5A30] px-[10px] py-[10px] h-[50px] text-[#ffff] font-bold text-[16px] uppercase rounded-[4px] border-[2px] border-[#ffff] hover:bg-transparent hover:text-[#FF5A30] hover:border-[#EF4D23] hover:border-[2px]"
+               href="{% if project.has_next %} {% url 'paginator' project.next_page_number %} {% else %} # {% endif %}"
+            >
+                следующий
+            </a>
+        </div>
+    </div>
+{% endblock %}

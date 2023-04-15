@@ -46,7 +46,7 @@ class Clients(models.Model):
     phone = models.IntegerField(null=True)
     address = models.CharField(max_length=120, null=True)
     manager = models.ForeignKey(User, on_delete=models.CASCADE)
-    status = models.ForeignKey(ClientsStatus, default='Архив', null=True, blank=True, on_delete=models.CASCADE)
+    status = models.ForeignKey(ClientsStatus, null=True, blank=True, on_delete=models.CASCADE)
     form = models.CharField(max_length=120, choices=FROM, null=True)
 
     def __str__(self):

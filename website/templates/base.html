@@ -17,9 +17,9 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container mx-auto mb-[20px]">
+<div class="container mx-auto mb-[20px] relative z-[1]">
     <div class="py-[20px] flex items-center justify-between">
-        <div class="logo marmar ">
+        <a href="{% url 'web' %}" class="logo marmar ">
             <svg width="150" height="42" viewBox="0 0 191 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                         d="M18.1765 17.3964V28.109C18.175 28.1556 18.1607 28.2009 18.1353 28.2399C18.1099 28.279 18.0743 28.3104 18.0324 28.3308C17.9905 28.3512 17.9438 28.3597 17.8974 28.3555C17.851 28.3513 17.8066 28.3345 17.769 28.3069L13.7285 25.0699C13.6986 25.0464 13.6747 25.0162 13.6585 24.9819C13.6423 24.9475 13.6344 24.9099 13.6353 24.8719V14.1593C13.6369 14.1127 13.6511 14.0674 13.6765 14.0283C13.7019 13.9893 13.7375 13.9578 13.7794 13.9375C13.8213 13.9171 13.868 13.9086 13.9144 13.9128C13.9609 13.917 14.0053 13.9338 14.0429 13.9613L18.0834 17.1984C18.1132 17.2219 18.1372 17.252 18.1533 17.2864C18.1695 17.3208 18.1774 17.3584 18.1765 17.3964Z"
@@ -92,11 +92,11 @@
                         d="M79.5412 44.6437H59.7462C59.7238 44.6453 59.7013 44.6423 59.6802 44.6348C59.659 44.6273 59.6397 44.6156 59.6233 44.6003C59.6069 44.585 59.5938 44.5664 59.5849 44.5459C59.576 44.5253 59.5714 44.5031 59.5715 44.4807V43.6539C59.5698 43.6306 59.5731 43.6071 59.5812 43.5851C59.5894 43.5631 59.6022 43.5432 59.6188 43.5266C59.6354 43.51 59.6553 43.4972 59.6773 43.489C59.6993 43.4809 59.7228 43.4775 59.7462 43.4793H79.5412C79.5642 43.4793 79.5869 43.4838 79.6081 43.4926C79.6292 43.5013 79.6485 43.5142 79.6647 43.5304C79.6809 43.5466 79.6938 43.5659 79.7026 43.5871C79.7114 43.6083 79.7159 43.631 79.7159 43.6539V44.4807C79.7129 44.5249 79.6932 44.5664 79.6608 44.5967C79.6283 44.627 79.5856 44.6438 79.5412 44.6437Z"
                         fill="#E73F11"/>
             </svg>
-        </div>
+        </a>
         <div class="text-[16px] font-[700] flex gap-[40px] items-center">
-            <a href='' class='hover:text-[#EF4D23] relative duration-300'>О нас</a>
+            <a href='{% url 'about' %}' class='hover:text-[#EF4D23] relative duration-300'>О нас</a>
             <a href='' class='hover:text-[#EF4D23] relative duration-300'>Услуги</a>
-            <a href='' class='hover:text-[#EF4D23] relative duration-300'>Наши работы </a>
+            <a href='{% url 'work' %}' class='hover:text-[#EF4D23] relative duration-300'>Наши работы </a>
             <a href='' class='hover:text-[#EF4D23] relative duration-300'>Контакты</a>
             <a href='{% url 'login_user' %}' class='hover:text-[#EF4D23] relative duration-300'>Личный кабинет</a>
         </div>
@@ -137,18 +137,6 @@
                     <input
                             class='bg-[#F4F5F7] p-[12px] border-[1px] border-[#D7DADD] rounded-[4px] text-[#9A9CA5]'
                             placeholder='Ваш номер телефона' type="tel"/>
-                </div>
-                <div class="flex flex-col gap-[10px]">
-                    <label class='text-[14px] text-[#424551]'>Электронная почта</label>
-                    <input
-                            class='bg-[#F4F5F7] p-[12px] border-[1px] border-[#D7DADD] rounded-[4px] text-[#9A9CA5]'
-                            placeholder='Ваш рабочий адрес электронной почты' type="email"/>
-                </div>
-                <div class="flex flex-col gap-[10px]">
-                    <label class='text-[14px] text-[#424551]'>Сообщение</label>
-                    <input
-                            class='bg-[#F4F5F7] px-[12px] pt-[12px] pb-[34px] border-[1px] border-[#D7DADD] rounded-[4px] text-[#9A9CA5]'
-                            placeholder='Ваше сообщение' type="text"/>
                 </div>
             </div>
             <button
